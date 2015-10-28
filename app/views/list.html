@@ -1,0 +1,19 @@
+<h2>List</h2>
+Filter: <input type="text" ng-model="listFilter.name">
+
+  <table>
+    <tr>
+      <th ng-click="doSort('firstName')">First Name</th>
+      <th ng-click="doSort('city')">City</th>
+      <th ng-click="doSort('date')">Date</th>
+      <th>&nbsp;</th>
+    </tr>
+    <tr ng-repeat="list in lists | filter:listFilter | orderBy:sortBy:reverse">
+      <td>{{ list.name[0].firstName }}</td>
+      <td>{{ list.city }}</td>
+      <td>{{ list.date | date }}</td>
+      <td><a href="#/drivers/{{ list.id }}">View Driver</a></td>
+    </tr>
+  </table>
+  <br />
+  <span>Total drivers: {{ lists.length }}</span>
