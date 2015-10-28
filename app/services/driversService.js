@@ -1,6 +1,6 @@
 (function() {
 
-  var driversFactory = function() {
+  var driversService = function() {
 
     var lists = [
       {
@@ -42,13 +42,12 @@
 
     ];
 
-    var factory = {};
-
-    factory.getLists = function() {
+    
+    this.getLists = function() {
       return lists;
     };
 
-    factory.getDriver = function(driverId) {
+    this.getDriver = function(driverId) {
       for (var i = 0, len = lists.length; i < len; i++) {
         if (lists[i].id === parseInt(driverId)) {
             return lists[i];
@@ -57,10 +56,8 @@
       return {};
     };
 
-    return factory;
-
   };
 
-  angular.module('driversListApp').factory('driversFactory', driversFactory);
+  angular.module('driversListApp').service('driversService', driversService);
 
 })();

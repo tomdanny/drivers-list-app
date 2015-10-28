@@ -1,14 +1,14 @@
 (function () {
 
 
-  var ListController = function ($scope, driversFactory) {
+  var ListController = function ($scope, driversService) {
   
     $scope.sortBy = 'firstName';
     $scope.reverse = false;
     $scope.lists = [];
 
     function init() {
-      $scope.lists = driversFactory.getLists();
+      $scope.lists = driversService.getLists();
     }
 
     init();
@@ -20,7 +20,7 @@
 
   };
 
-  ListController.$inject = ['$scope', 'driversFactory'];
+  ListController.$inject = ['$scope', 'driversService'];
 
   angular.module('driversListApp')
   .controller('ListController', ListController);
