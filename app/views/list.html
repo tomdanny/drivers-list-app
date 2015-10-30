@@ -1,4 +1,4 @@
-<h2>List</h2>
+<h2>{{ appSettings.title }}</h2>
 Filter: <input type="text" ng-model="listFilter.name">
 
   <table>
@@ -17,3 +17,5 @@ Filter: <input type="text" ng-model="listFilter.name">
   </table>
   <br />
   <span>Total drivers: {{ lists.length }}</span>
+<br /><br />
+<footer>Version: {{ appSettings.version }}</footer>

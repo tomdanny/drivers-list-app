@@ -1,14 +1,21 @@
 (function () {
 
 
-  var ListController = function ($scope, driversService) {
+  var ListController = function ($scope, $log, driversFactory, appSettings) {
   
     $scope.sortBy = 'firstName';
     $scope.reverse = false;
     $scope.lists = [];
+    $scope.appSettings = appSettings;
 
     function init() {
-      $scope.lists = driversService.getLists();
+      driversFactory.getLists()
+        .success(function(lists) {
+          $scope.lists = lists;
+        })
+        .error(function(data, status, headers, config) {
+          $log.log(data.error + ' ' + status);
+        });
     }
 
     init();
@@ -20,7 +27,7 @@
 
   };
 
-  ListController.$inject = ['$scope', 'driversService'];
+  ListController.$inject = ['$scope', '$log', 'driversFactory', 'appSettings'];
 
   angular.module('driversListApp')
   .controller('ListController', ListController);
